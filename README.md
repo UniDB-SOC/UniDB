@@ -43,7 +43,7 @@ Install the dependencies with Anaconda and activate the environment with:
 The Test results will be saved in `\results`.
 
 
-# Visual Results
+# UniDB-GOU
 <div align="center">
     <img src="figs/r.png" alt="Framework">
 </div>
@@ -51,7 +51,6 @@ The Test results will be saved in `\results`.
 We computed the average distances between high-quality and low-quality images in the three datasets (CelebA-HQ, Rain100H, and DIV2K) related to the subsequent experimental section as the distances $\| x_T - x_0 \|^2_2$. As can be seen, for all three datasets, these distances remain relatively small, ranging from $10^{-4}$ to $10^{-10}$ when $\gamma$ is within the range of $1\times10^5$ to $1\times10^9$. Therefore, our subsequent experiments will focus on the $\gamma$ of this range to further investigate the performance of UniDB-GOU. 
 
 
-# Visual Results
 <div align="center">
     <img src="figs/UniDB-GOU.png" alt="Framework">
 </div>
