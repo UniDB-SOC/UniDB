@@ -51,7 +51,10 @@ The Test results will be saved in `\results`.
 We computed the average distances between high-quality and low-quality images in the three datasets (CelebA-HQ, Rain100H, and DIV2K) related to the subsequent experimental section as the distances $\| x_T - x_0 \|^2_2$. As can be seen, for all three datasets, these distances remain relatively small, ranging from $10^{-4}$ to $10^{-10}$ when $\gamma$ is within the range of $1\times10^5$ to $1\times10^9$. Therefore, our subsequent experiments will focus on the $\gamma$ of this range to further investigate the performance of UniDB-GOU. 
 
 
-
+# Visual Results
+<div align="center">
+    <img src="figs/UniDB-GOU.png" alt="Framework">
+</div>
 
 # Train
 1. Prepare datasets.
@@ -61,15 +64,7 @@ We computed the average distances between high-quality and low-quality images in
 5. You can modify the parameter of gamma in UniDB-GOU/utils/sde_utils.py to balance the control term and the terminal penalty term in the stochastic optimal control, so that the image can achieve better quality.
 
 
-\[
-e^{-\bar{\theta}_t \frac{\bar{\sigma}_{t:T}^2}{\bar{\sigma}_T^2}} \Rightarrow e^{-\bar{\theta}_t \frac{\gamma^{-1} + \bar{\sigma}_{t:T}^2}{\gamma^{-1} + \bar{\sigma}_T^2}}
-\]
 
-
-
-\[
-\underbrace{g_t h = \frac{g_t e^{-2\bar{\theta}_{t:T}} (x_T - x_t)}{\bar{\sigma}_{t:T}^2}}_{\text{GOUB}} \Rightarrow \underbrace{u^*_{t,\gamma} = \frac{g_t e^{-2\bar{\theta}_{t:T}} (x_T - x_t)}{\gamma^{-1} + \bar{\sigma}_{t:T}^2}}_{\text{UniDB-GOU}}
-\]
 
 
 Here, we mainly focus on modifying the GOU (Generalized Ornstein-Uhlenbeck) process. For modifications related to VE and VP, readers can refer to the derivations in the appendix of our paper and make the changes themselves (which only require modifying one or two lines of code). We will also release the next version as soon as possible.
