@@ -1,51 +1,64 @@
 <h1 align="center"> Image Restoration Through Generalized Ornstein-Uhlenbeck Bridge </h1>
 
 <div align="center">
-  Conghan&nbsp;Yue<sup>1</sup></a> &ensp; <b>&middot;</b> &ensp;
-  Zhengwei&nbsp;Peng</a> &ensp; <b>&middot;</b> &ensp;
-  Junlong&nbsp;Ma</a> &ensp; <b>&middot;</b> &ensp;
-  Shiyan&nbsp;Du</a> &ensp; <b>&middot;</b> &ensp;
-  Pengxu&nbsp;Wei</a> &ensp; <b>&middot;</b> &ensp;
-  Dongyu&nbsp;Zhang</a>
-  <br> <br> 
-  <sup>1</sup>yuech5@mail2.sysu.edu.cn, Sun Yat-Sen University
-  
+  Anonymous Authors<sup>1</sup>
+
+
+
+
+
 </div>
-<h3 align="center"> [<a href="https://arxiv.org/abs/2312.10299">arXiv</a>] [<a href="https://paperswithcode.com/paper/image-restoration-through-generalized">Papers With Code</a>]</h3>
+<h3 align="center"> </h3>
 
 
-Official PyTorch Implementations of GOUB, a diffusion bridge model that applies the Doob's *h*-transform to the generalized Ornstein-Uhlenbeck process. This model can address general image restoration tasks without the need for specific prior knowledge.
 
-# Overview
-<div align="center">
-    <img src="figs/framework.png" alt="Framework">
-</div>
+We reveal that the diffusion bridge with Doob’s $h$-transform is merely a special case within our framework, arising when the terminal penalty coefficient of the SOC cost function approaches infinity. By introducing this terminal penalty coefficient, UniDB effectively balances control costs and terminal penalties, significantly enhancing detail preservation and image quality. Notably, UniDB integrates seamlessly with existing diffusion bridge models, requiring only minor code adjustments. Extensive experiments in image restoration tasks validate the superiority and adaptability of UniDB. 
 
 # Visual Results
 <div align="center">
-    <img src="figs/ir.png" alt="Framework" width="60%"><br>
+    <img src="figs/main.png" alt="Framework">
 </div>
 
-# Intallation
-This code is developed with Python3, and we recommend python>=3.8 and PyTorch ==1.13.0. Install the dependencies with Anaconda and activate the environment with:
+<div align="center">
+    <img src="figs/combine.png" alt="Framework">
+</div>
 
-    conda create --name GOUB python=3.8
-    conda activate GOUB
+
+
+# Intallation
+Install the dependencies with Anaconda and activate the environment with:
+
+    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+    conda create --name UniDB python=3.9
+    conda activate UniDB
     pip install -r requirements.txt
 
 # Test
 1. Prepare datasets.
-2. Download pretrained checkpoints [here](https://drive.google.com/drive/folders/1rxHiZTxNSlvM9VSoRUY_rdoDp8DBbX8C?usp=sharing) (also provided datasets).
+2. Download pretrained checkpoints (We are working as quickly as possible to organize all the chechpoints and results).
 3. Modify options, including dataroot_GT, dataroot_LQ and pretrain_model_G.
 4. Choose a model to sample (Default: GOUB): test function in `codes/models/denoising_model.py`.
 5. `python test.py -opt=options/test.yml`
 
 The Test results will be saved in `\results`.
 
+
+# Visual Results
+<div align="center">
+    <img src="figs/r.png" alt="Framework">
+</div>
+
+We computed the average distances between high-quality and low-quality images in the three datasets (CelebA-HQ, Rain100H, and DIV2K) related to the subsequent experimental section as the distances $\| x_T - x_0 \|^2_2$. As can be seen, for all three datasets, these distances remain relatively small, ranging from $10^{-4}$ to $10^{-10}$ when $\gamma$ is within the range of $1\times10^5$ to $1\times10^9$. Therefore, our subsequent experiments will focus on the $\gamma$ of this range to further investigate the performance of UniDB-GOU. 
+
+
+
+
 # Train
 1. Prepare datasets.
 2. Modify options, including dataroot_GT, dataroot_LQ.
 3. `python train.py -opt=options/train.yml` for single GPU.<br> `python -m torch.distributed.launch --nproc_per_node=2 --master_port=1111 train.py -opt=options/train.yml --launcher pytorch` for multi GPUs. *Attention: see [Important Option Details](#important-option-details)*.
+4. For the DIV2K dataset, your GPU memory needs to be greater than 34GB. 
+5. You can modify the parameter of gamma in codes/utils/sde_utils.py to balance the control term and the terminal penalty term in the stochastic optimal control, so that the image can achieve better quality.
 
 The Training log will be saved in `\experiments`.
 
