@@ -1,4 +1,4 @@
-<h1 align="center"> Image Restoration Through Generalized Ornstein-Uhlenbeck Bridge </h1>
+<h1 align="center"> UniDB: A Unified Diffusion Bridge Framework via Stochastic Optimal Control </h1>
 
 <div align="center">
   Anonymous Authors<sup>1</sup>
@@ -37,7 +37,7 @@ Install the dependencies with Anaconda and activate the environment with:
 1. Prepare datasets.
 2. Download pretrained checkpoints (We are working as quickly as possible to organize all the chechpoints and results).
 3. Modify options, including dataroot_GT, dataroot_LQ and pretrain_model_G.
-4. Choose a model to sample (Default: GOUB): test function in `codes/models/denoising_model.py`.
+4. Choose a model to sample (Default: UniDB): test function in `codes/models/denoising_model.py`.
 5. `python test.py -opt=options/test.yml`
 
 The Test results will be saved in `\results`.

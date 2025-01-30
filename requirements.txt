@@ -14,3 +14,4 @@ gradio
 tensorboard
 ema_pytorch
 IPython
+pytorch_fid
