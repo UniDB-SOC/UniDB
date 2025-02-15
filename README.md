@@ -4,7 +4,8 @@
   Anonymous Authors<sup>1</sup>
 
 
-
+</div>
+<h3 align="center"> [<a href="https://arxiv.org/pdf/2502.05749">arXiv</a>] [<a href="https://unidb-soc.github.io/UniDB_page/">Project page</a>]</h3>
 
 
 </div>
@@ -35,7 +36,7 @@ Install the dependencies with Anaconda and activate the environment with:
 
 # Test
 1. Prepare datasets.
-2. Download pretrained checkpoints (We are working as quickly as possible to organize all the chechpoints and results).
+2. Download pretrained checkpoints [here](https://drive.google.com/drive/folders/192X46xuCcPyZrGPDHlUFfug1ggRKyhFn?usp=sharing)
 3. Modify options, including dataroot_GT, dataroot_LQ and pretrain_model_G.
 4. Choose a model to sample (Default: UniDB): test function in `codes/models/denoising_model.py`.
 5. `python test.py -opt=options/test.yml`
