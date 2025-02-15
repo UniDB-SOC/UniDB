@@ -1,5 +1,5 @@
 #### general settings
-name: goub
+name: unidb
 use_tb_logger: true
 model: denoising
 distortion: inpaint
@@ -10,7 +10,7 @@ sde:
   T: 100
   schedule: cosine # linear, cosine
   eps: 0.005
-  gamma: 1e6
+  gamma: !!float 1e6
 
 degradation:
   # for inpainting
