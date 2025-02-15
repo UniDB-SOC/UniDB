@@ -4,8 +4,8 @@
   Anonymous Authors<sup>1</sup>
 
 
-</div>
-<h3 align="center"> [<a href="https://arxiv.org/pdf/2502.05749">arXiv</a>] [<a href="https://unidb-soc.github.io/UniDB_page/">Project page</a>]</h3>
+<!-- </div>
+<h3 align="center"> [<a href="https://arxiv.org/pdf/2502.05749">arXiv</a>] [<a href="https://unidb-soc.github.io/UniDB_page/">Project page</a>]</h3> -->
 
 
 </div>
