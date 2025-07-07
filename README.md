@@ -4,7 +4,9 @@
   Kaizhen Zhu<sup>1,2,*</sup>, Mokai Pan<sup>1,2,*</sup>, Yuexin Ma<sup>1,2</sup>, Yanwei Fu<sup>3</sup>, Jingyi Yu<sup>1,2</sup>, Jingya Wang<sup>1,2</sup>, Ye Shi<sup>1,2,†</sup>
 
   <sup>1</sup>ShanghaiTech University
+
   <sup>2</sup>MoE Key Laboratory of Intelligent Perception and Human-Machine Collaboration
+  
   <sup>3</sup>Fudan University
 
 
