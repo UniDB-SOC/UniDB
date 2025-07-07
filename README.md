@@ -1,11 +1,16 @@
-<h1 align="center"> UniDB: A Unified Diffusion Bridge Framework via Stochastic Optimal Control </h1>
+<h1 align="center"> UniDB: A Unified Diffusion Bridge Framework via Stochastic Optimal Control [ICML 2025 Spotlight]</h1>
 
 <div align="center">
-  Anonymous Authors<sup>1</sup>
+  Kaizhen Zhu<sup>1,2,*</sup>, Mokai Pan<sup>1,2,*</sup>, Yuexin Ma<sup>1,2</sup>, Yanwei Fu<sup>3</sup>, Jingyi Yu<sup>1,2</sup>, Jingya Wang<sup>1,2</sup>, Ye Shi<sup>1,2,†</sup>
+
+  <sup>1</sup>ShanghaiTech University
+  <sup>2</sup>MoE Key Laboratory of Intelligent Perception and Human-Machine Col laboration
+  <sup>3</sup>Fudan University
 
 
-<!-- </div>
-<h3 align="center"> [<a href="https://arxiv.org/pdf/2502.05749">arXiv</a>] [<a href="https://unidb-soc.github.io/UniDB_page/">Project page</a>]</h3> -->
+
+</div>
+<h3 align="center"> [<a href="https://arxiv.org/pdf/2502.05749">arXiv</a>] [<a href="https://unidb-soc.github.io/UniDB_page/">Project page</a>]</h3>
 
 
 </div>
@@ -17,7 +22,7 @@ We reveal that the diffusion bridge with Doob’s $h$-transform is merely a spec
 
 # Visual Results
 <div align="center">
-    <img src="figs/main.png" alt="Framework">
+    <img src="figs/1.png" alt="Framework">
 </div>
 
 <div align="center">
