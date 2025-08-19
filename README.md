@@ -66,7 +66,7 @@ We computed the average distances between high-quality and low-quality images in
 # Train
 1. Prepare datasets.
 2. Modify options, including dataroot_GT, dataroot_LQ.
-3. `python train.py -opt=options/train.yml` for single GPU.<br> `python -m torch.distributed.launch --nproc_per_node=2 --master_port=1111 train.py -opt=options/train.yml --launcher pytorch` for multi GPUs. *Attention: see [Important Option Details](#important-option-details)*.
+3. `python train.py -opt=options/train.yml` for single GPU.<br> `torchrun --nproc_per_node=2 --master_port=1111 train.py -opt=options/train.yml --launcher pytorch` for multi GPUs. *Attention: see [Important Option Details](#important-option-details)*.
 4. For the DIV2K dataset, your GPU memory needs to be greater than 34GB. 
 5. You can modify the parameter of gamma in UniDB-GOU/utils/sde_utils.py to balance the control term and the terminal penalty term in the stochastic optimal control, so that the image can achieve better quality.
 

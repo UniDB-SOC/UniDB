@@ -66,7 +66,7 @@ class SDE(abc.ABC):
 #############################################################################
 
 
-class GOUB(SDE):
+class UniDB(SDE):
     '''
     Let timestep t start from 1 to T, state t=0 is never used
     '''

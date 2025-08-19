@@ -212,7 +212,7 @@ def main():
         current_step = 0
         start_epoch = 0
 
-    sde = util.GOUB(lambda_square=opt["sde"]["lambda_square"], gamma=opt["sde"]["gamma"], T=opt["sde"]["T"], schedule=opt["sde"]["schedule"], eps=opt["sde"]["eps"], device=device)
+    sde = util.UniDB(lambda_square=opt["sde"]["lambda_square"], gamma=opt["sde"]["gamma"], T=opt["sde"]["T"], schedule=opt["sde"]["schedule"], eps=opt["sde"]["eps"], device=device)
     sde.set_model(model.model)
 
     scale = opt['degradation']['scale']
