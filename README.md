@@ -102,3 +102,17 @@ We provid a brief guidelines for commputing FID of two set of images:
 
 1. Install FID library: `pip install pytorch-fid`.
 2. Commpute FID: `python -m pytorch_fid GT_images_file_path generated_images_file_path --batch-size 1`<br>if all the images are the same size, you can remove `--batch-size 1` to accelerate commputing.
+
+
+## Citation
+If you find this repository useful in your research, please consider citing:
+```
+@inproceedings{
+  zhu2025unidb,
+  title={Uni{DB}: A Unified Diffusion Bridge Framework via Stochastic Optimal Control},
+  author={Kaizhen Zhu and Mokai Pan and Yuexin Ma and Yanwei Fu and Jingyi Yu and Jingya Wang and Ye Shi},
+  booktitle={Forty-second International Conference on Machine Learning},
+  year={2025},
+  url={https://openreview.net/forum?id=uqCfoVXb67}
+}
+```
