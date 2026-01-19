@@ -9,7 +9,7 @@ sde:
   T: 100
   schedule: cosine # linear, cosine
   eps: 0.005
-  gamma: !!float 1e8
+  gamma_inv: !!float 1e-8 # gamma_inv = 0 implies GOUB
   
 degradation:
   # for super-resolution

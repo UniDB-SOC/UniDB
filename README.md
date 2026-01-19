@@ -10,15 +10,12 @@
   <sup>3</sup>Fudan University
 
 
-
 </div>
 <h3 align="center"> [<a href="https://arxiv.org/pdf/2502.05749">arXiv</a>] [<a href="https://unidb-soc.github.io/UniDB_page/">Project page</a>]</h3>
 
 
 </div>
 <h3 align="center"> </h3>
-
-
 
 We reveal that the diffusion bridge with Doob’s $h$-transform is merely a special case within our framework, arising when the terminal penalty coefficient of the SOC cost function approaches infinity. By introducing this terminal penalty coefficient, UniDB effectively balances control costs and terminal penalties, significantly enhancing detail preservation and image quality. Notably, UniDB integrates seamlessly with existing diffusion bridge models, requiring only minor code adjustments. Extensive experiments in image restoration tasks validate the superiority and adaptability of UniDB. 
 
@@ -70,10 +67,6 @@ We computed the average distances between high-quality and low-quality images in
 4. For the DIV2K dataset, your GPU memory needs to be greater than 34GB. 
 5. You can modify the parameter of gamma in UniDB-GOU/utils/sde_utils.py to balance the control term and the terminal penalty term in the stochastic optimal control, so that the image can achieve better quality.
 
-
-
-
-
 Here, we mainly focus on modifying the GOU (Generalized Ornstein-Uhlenbeck) process. For modifications related to VE and VP, readers can refer to the derivations in the appendix of our paper and make the changes themselves (which only require modifying one or two lines of code). We will also release the next version as soon as possible.
 
 The Training log will be saved in `\experiments`.
@@ -104,7 +97,7 @@ We provid a brief guidelines for commputing FID of two set of images:
 2. Commpute FID: `python -m pytorch_fid GT_images_file_path generated_images_file_path --batch-size 1`<br>if all the images are the same size, you can remove `--batch-size 1` to accelerate commputing.
 
 
-## Citation
+# Citation
 If you find this repository useful in your research, please consider citing:
 ```
 @inproceedings{

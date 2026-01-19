@@ -71,10 +71,10 @@ class UniDB(SDE):
     Let timestep t start from 1 to T, state t=0 is never used
     '''
 
-    def __init__(self, lambda_square, gamma, T=100, schedule='cosine', eps=0.01, device=None):
+    def __init__(self, lambda_square, gamma_inv, T=100, schedule='cosine', eps=0.01, device=None):
         super().__init__(T, device)
         self.lambda_square = lambda_square / 255 if lambda_square >= 1 else lambda_square
-        self.gamma = gamma
+        self.gamma_inv = gamma_inv
         self._initialize(self.lambda_square, T, schedule, eps)
 
     def _initialize(self, lambda_square, T, schedule, eps=0.01):
@@ -191,7 +191,7 @@ class UniDB(SDE):
 
     # TODO
     def m(self, t):  # cofficient of x0 in marginal forward process
-        return torch.exp(-self.thetas_cumsum[t] * self.dt) * (1 + self.gamma * self.sigma_t_T[t] ** 2) / (1 + self.gamma * self.sigma_bars[-1] ** 2)
+        return torch.exp(-self.thetas_cumsum[t] * self.dt) * (self.gamma_inv + self.sigma_t_T[t] ** 2) / (self.gamma_inv + self.sigma_bars[-1] ** 2)
 
     # TODO
     def n(self, t):  # cofficient of xT in marginal forward process
@@ -245,7 +245,7 @@ class UniDB(SDE):
             return (self.thetas[t] * (self.mu - x)) * self.dt
         # add h-transform term
         tmp = torch.exp(2 * (self.thetas_cumsum[t] - self.thetas_cumsum[-1]) * self.dt)  # e^{-2\bar\theta_{t:T}}}
-        drift_h = - (self.gamma * self.sigmas[t] ** 2 * tmp) / (1 + self.gamma * self.sigma_t_T[t] ** 2) * (x - self.mu)
+        drift_h = - (self.sigmas[t] ** 2 * tmp) / (self.gamma_inv + self.sigma_t_T[t] ** 2) * (x - self.mu)
         return (self.thetas[t] * (self.mu - x) + drift_h) * self.dt
 
     # def sde_reverse_drift_1(self, x, score, t):
@@ -262,7 +262,7 @@ class UniDB(SDE):
         if t == 100:
             return (self.thetas[t] * (self.mu - x) - self.sigmas[t] ** 2 * score) * self.dt  # drift_h=0
         tmp = torch.exp(2 * (self.thetas_cumsum[t] - self.thetas_cumsum[-1]) * self.dt)  # e^{-2\bar\theta_{t:T}}}
-        drift_h = - (self.gamma * self.sigmas[t] ** 2 * tmp) / (1 + self.gamma * self.sigma_t_T[t] ** 2) * (x - self.mu)
+        drift_h = - (self.sigmas[t] ** 2 * tmp) / (self.gamma_inv + self.sigma_t_T[t] ** 2) * (x - self.mu)
         return (self.thetas[t] * (self.mu - x) + drift_h - self.sigmas[t] ** 2 * score) * self.dt
 
     def sde_reverse_drift(self, x, score, t):

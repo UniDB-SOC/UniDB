@@ -68,8 +68,7 @@ for phase, dataset_opt in sorted(opt["datasets"].items()):
 model = create_model(opt)
 device = model.device
 
-sde = util.UniDB(lambda_square=opt["sde"]["lambda_square"], gamma=opt["sde"]["gamma"], T=opt["sde"]["T"], schedule=opt["sde"]["schedule"],
-                 eps=opt["sde"]["eps"], device=device)
+sde = util.UniDB(lambda_square=opt["sde"]["lambda_square"], gamma_inv=opt["sde"]["gamma_inv"], T=opt["sde"]["T"], schedule=opt["sde"]["schedule"], eps=opt["sde"]["eps"], device=device)
 sde.set_model(model.model)
 lpips_fn = lpips.LPIPS(net='alex').to(device)
 
