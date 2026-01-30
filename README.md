@@ -98,7 +98,7 @@ We provid a brief guidelines for commputing FID of two set of images:
 
 
 # Citation
-If you find this repository useful in your research, please consider citing:
+If you find this repository useful in your research, please consider citing our paper:
 ```
 @inproceedings{
   zhu2025unidb,

@@ -179,21 +179,17 @@ class UniDB(SDE):
 
     #####################################
 
-    # # TODO
     # def m(self, t):  # cofficient of x0 in marginal forward process
     #     return torch.exp(-self.thetas_cumsum[t] * self.dt) * self.sigma_t_T[t] ** 2 / self.sigma_bars[-1] ** 2
 
-    # # TODO
     # def n(self, t):  # cofficient of xT in marginal forward process
     #     return ((1 - torch.exp(-self.thetas_cumsum[t] * self.dt)) * self.sigma_t_T[t] ** 2 + torch.exp(
     #         -2 * (self.thetas_cumsum[-1] - self.thetas_cumsum[t]) * self.dt) * self.sigma_bars[t] ** 2) / \
     #            self.sigma_bars[-1] ** 2
 
-    # TODO
     def m(self, t):  # cofficient of x0 in marginal forward process
         return torch.exp(-self.thetas_cumsum[t] * self.dt) * (self.gamma_inv + self.sigma_t_T[t] ** 2) / (self.gamma_inv + self.sigma_bars[-1] ** 2)
 
-    # TODO
     def n(self, t):  # cofficient of xT in marginal forward process
         return 1 - self.m(t)
 
@@ -239,7 +235,6 @@ class UniDB(SDE):
     #     drift_h = - self.sigmas[t] ** 2 * tmp / self.sigma_t_T[t] ** 2 * (x - self.mu)
     #     return (self.thetas[t] * (self.mu - x) + drift_h) * self.dt
 
-    # TODO
     def drift(self, x, t):
         if t == 100:
             return (self.thetas[t] * (self.mu - x)) * self.dt
@@ -256,7 +251,6 @@ class UniDB(SDE):
     #     drift_h = - self.sigmas[t] ** 2 * tmp / self.sigma_t_T[t] ** 2 * (x - self.mu)
     #     return (self.thetas[t] * (self.mu - x) + drift_h - self.sigmas[t] ** 2 * score) * self.dt
 
-    # TODO
     def sde_reverse_drift_1(self, x, score, t):
         # add h-transform term
         if t == 100:
@@ -268,7 +262,7 @@ class UniDB(SDE):
     def sde_reverse_drift(self, x, score, t):
         # add h-transform term
         tmp = torch.exp(2 * (self.thetas_cumsum[t] - self.thetas_cumsum[-1]) * self.dt)  # e^{-2\bar\theta_{t:T}}}
-        drift_h = - self.sigmas[t] ** 2 * tmp / self.sigma_t_T[t] ** 2 * (x - self.mu)
+        drift_h = - self.sigmas[t] ** 2 * tmp / (self.gamma_inv + self.sigma_t_T[t] ** 2) * (x - self.mu)
         mask = (t == 100)
         mask_expanded = mask.expand_as(drift_h)
         drift_h[mask_expanded] = 0
